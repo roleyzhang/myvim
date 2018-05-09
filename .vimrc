@@ -184,7 +184,7 @@ set cursorcolumn
 set nowrap
 "-------------FOR LEADERF----------
 noremap <F3> :LeaderfFunction!<cr>
-noremap <C-p> :LeaderfMru<cr>
+noremap \p :LeaderfMru<cr>
 nnoremap <silent> <space>r  :<C-u>LeaderfMruCwd<cr>
 nnoremap <silent> <space>h  :<C-u>LeaderfHistoryCmd<cr>
 " use * to search current word in normal mode

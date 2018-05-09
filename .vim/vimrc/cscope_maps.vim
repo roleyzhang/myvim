@@ -109,9 +109,9 @@ if has("cscope")
     nmap <C-a>c <C-W><C-S> :cs find c <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-a>t <C-W><C-S> :cs find t <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-a>e <C-W><C-S> :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-a>f <C-W><C-S> :cs find f <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-a>i <C-W><C-S> :cs find i <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-a>d <C-W><C-S> :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-@>f <C-W><C-S> :cs find f <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-@>i <C-W><C-S> :cs find i <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-@>d <C-W><C-S> :cs find d <C-R>=expand("<cword>")<CR><CR>	
 
     " nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
     " nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>	
@@ -129,14 +129,14 @@ if has("cscope")
     " (Note: you may wish to put a 'set splitright' in your .vimrc
     " if you prefer the new window on the right instead of the left
 
-    nmap <C-a><C-a>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-a><C-a>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-a><C-a>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-a><C-a>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-a><C-a>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-a><C-a>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-a><C-a>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-    nmap <C-a><C-a>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+    nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
     """"""""""""" key map timeouts
