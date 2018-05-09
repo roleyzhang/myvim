@@ -236,6 +236,24 @@ let g:license='copyright@2018'
 "-------------FOR YANKRING--------
 " :nnoremap <silent> <F11> :YRShow<CR>
 nnoremap <silent> \y  :<C-u>YRShow<cr>
+"-------------FOR CSCOPE CONFIG----
+" $ cscope -bqR    for C++/C
+" $ find . -name "*.java" > cscope.files    for java
+" $ cscope -bq
+" :cs add cscope.out
+" s 	symbol：查找使用该符号的引用
+" g 	global：查找该全局符号的定义
+" c 	calls：查找调用当前方法的位置
+" t 	text：查找出现该文本的位置
+" e 	egrep：使用 egrep 搜索当前单词
+" f 	file：打开文件名
+" i 	includes：查询引入了当前文件的文件
+" d 	depends：查找当前方法调用的方法
+" cd ~/.vim/vimrc
+" wget http://cscope.sourceforge.net/cscope_maps.vim
+" " Below is the minimum key mappings.
+
+
 "-------------FOR SYNTAX CHEKING---
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
