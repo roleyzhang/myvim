@@ -120,9 +120,12 @@ if !has('nvim')
 endif
 call dein#add('Chiel92/vim-autoformat') " This for source file auto format
 call dein#add('bkad/CamelCaseMotion') " This for camel case move
-call dein#add('neomake/neomake') " This for camel case move
+" call dein#add('neomake/neomake') " This for auto lint, but replace by ale
+call dein#add('w0rp/ale') " This for auto lint code
 call dein#add('aperezdc/vim-template') " This for language template
 call dein#add('vim-scripts/YankRing.vim') " This for Yank
+call dein#add('airblade/vim-rooter') " This for auto change project root folder
+
 " call dein#add('vim-syntastic/syntastic') " This for language syntas cheking
 " call dein#add('Scuilion/gradle-syntastic-plugin') " This for language syntas cheking
 " call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
@@ -218,24 +221,35 @@ au BufWrite * :Autoformat
 "-------------FOR CAMELCASEMOVE----
 call camelcasemotion#CreateMotionMappings('<leader>')
 
+"-------------FOR ALE---------------
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "-------------FOR NEOMAKE CHEKING---
 " When writing a buffer (no delay).
-call neomake#configure#automake('w')
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
-" When reading a buffer (after 1s), and when writing (no delay).
-call neomake#configure#automake('rw', 1000)
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
-let g:neomake_open_list = 2
-"-------------FOR TEMPLATE SETTING-
-let g:username='Roley ZHANG'
-let g:email='roleyzhang@gmail.com'
-let g:license='copyright@2018'
-"-------------FOR YANKRING--------
-" :nnoremap <silent> <F11> :YRShow<CR>
-nnoremap <silent> \y  :<C-u>YRShow<cr>
+" call neomake#configure#automake('w')
+" " When writing a buffer (no delay), and on normal mode changes (after 750ms).
+" call neomake#configure#automake('nw', 750)
+" " When reading a buffer (after 1s), and when writing (no delay).
+" call neomake#configure#automake('rw', 1000)
+" " Full config: when writing or reading a buffer, and on changes in insert and
+" " normal mode (after 1s; no delay when writing).
+" call neomake#configure#automake('nrwi', 500)
+" let g:neomake_open_list = 2
+" "-------------FOR TEMPLATE SETTING-
+" let g:username='Roley ZHANG'
+" let g:email='roleyzhang@gmail.com'
+" let g:license='copyright@2018'
+" "-------------FOR YANKRING--------
+" " :nnoremap <silent> <F11> :YRShow<CR>
+" nnoremap <silent> \y  :<C-u>YRShow<cr>
+" "-------------FOR VIM_ROOTER
+" let g:rooter_patterns = ['.gradle']
+" let g:rooter_patterns = ['.gradle', '.git/']
 "-------------FOR CSCOPE CONFIG----
 " $ cscope -bqR    for C++/C
 " $ find . -name "*.java" > cscope.files    for java
@@ -270,6 +284,7 @@ nnoremap <silent> \y  :<C-u>YRShow<cr>
 "
 "-------------FOR JAVA-------------
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 " let g:JavaComplete_PomPath = '~/.vim/dein/repos/github.com/artur-shaik/vim-javacomplete2/libs/javavi/pom.xml'
 " let g:JavaComplete_GradleExecutable = 'gradle'
 " " 在方法声明完成时闭合括号:
