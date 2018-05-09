@@ -122,6 +122,7 @@ call dein#add('Chiel92/vim-autoformat') " This for source file auto format
 call dein#add('bkad/CamelCaseMotion') " This for camel case move
 call dein#add('neomake/neomake') " This for camel case move
 call dein#add('aperezdc/vim-template') " This for language template
+call dein#add('vim-scripts/YankRing.vim') " This for Yank
 " call dein#add('vim-syntastic/syntastic') " This for language syntas cheking
 " call dein#add('Scuilion/gradle-syntastic-plugin') " This for language syntas cheking
 " call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
