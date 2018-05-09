@@ -233,6 +233,9 @@ let g:neomake_open_list = 2
 let g:username='Roley ZHANG'
 let g:email='roleyzhang@gmail.com'
 let g:license='copyright@2018'
+"-------------FOR YANKRING--------
+" :nnoremap <silent> <F11> :YRShow<CR>
+nnoremap <silent> \y  :<C-u>YRShow<cr>
 "-------------FOR SYNTAX CHEKING---
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
