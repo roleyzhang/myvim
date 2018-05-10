@@ -181,7 +181,7 @@ set list listchars=tab:>\ ,trail:-,eol:¬
 set cursorcolumn
 set nowrap
 "-------------FOR LEADERF----------
-noremap > :LeaderfFunction!<cr>
+noremap \fn :LeaderfFunction!<cr>
 noremap \p :LeaderfMru<cr>
 nnoremap <silent> <space>r  :<C-u>LeaderfMruCwd<cr>
 nnoremap <silent> <space>h  :<C-u>LeaderfHistoryCmd<cr>
