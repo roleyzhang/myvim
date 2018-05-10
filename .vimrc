@@ -145,7 +145,7 @@ syntax enable
 "=====================ALL CONFIG BY ROLEY====================
 "# TIP, reload change: source ~/.vimrc
 "-------------FOR GLOBAL-----------
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+" set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 set relativenumber "show the current line number 0 and up line,down line number
 colorscheme gruvbox
@@ -177,16 +177,20 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 "-------------FOR SHOW INDENT---------
 let g:indent_guides_enable_on_vim_startup = 1
-set ts=1 sw=1 noet
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
+let g:indent_guides_start_level=2
+set ts=4 sw=4 et
+" hi IndentGuidesOdd  ctermbg=black
+" hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_guide_size = 1
-" let g:indent_guides_start_level = 2
+
+
+
+
 set list listchars=tab:>\ ,trail:-,eol:¬
 set cursorcolumn
 set nowrap
 "-------------FOR LEADERF----------
-noremap <F3> :LeaderfFunction!<cr>
+noremap \fn :LeaderfFunction!<cr>
 noremap \p :LeaderfMru<cr>
 nnoremap <silent> <space>r  :<C-u>LeaderfMruCwd<cr>
 nnoremap <silent> <space>h  :<C-u>LeaderfHistoryCmd<cr>
