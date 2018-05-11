@@ -182,6 +182,7 @@ set cursorcolumn
 set nowrap
 "-------------FOR LEADERF----------
 noremap \fn :LeaderfFunction!<cr>
+noremap \m :LeaderfBufTag!<cr>
 noremap \p :LeaderfMru<cr>
 nnoremap <silent> <space>r  :<C-u>LeaderfMruCwd<cr>
 nnoremap <silent> <space>h  :<C-u>LeaderfHistoryCmd<cr>
