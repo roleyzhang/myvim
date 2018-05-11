@@ -67,6 +67,8 @@ call dein#add('vim-scripts/DfrankUtil') " This is a library for Indexer & Vimprj
 call dein#add('vim-scripts/vimprj') " This for mutil project configuration
 call dein#add('PeloNZ/vim-indexer') " This for auto generate tags for mutil project
 call dein#add('sjl/gundo.vim') " This for review undo tree
+call dein#add('airblade/vim-gitgutter') " This for show git info/diff
+call dein#add('neoclide/vim-easygit') " This for show git info/diff
 
 " call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
 
@@ -117,6 +119,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 "-------------FOR FOLD----------------
 set foldmethod=syntax
+"-------------FOR EASYGIT-------------
+let g:easygit_enable_command = 1
 "-------------FOR UNDO TREE-----------
 nnoremap <Leader>ud :GundoToggle<CR>
 set undofile
