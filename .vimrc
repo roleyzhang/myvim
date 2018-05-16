@@ -70,6 +70,9 @@ call dein#add('sjl/gundo.vim') " This for review undo tree
 call dein#add('airblade/vim-gitgutter') " This for show git info/diff
 " call dein#add('neoclide/vim-easygit') " This for show git info/diff
 call dein#add('jreybert/vimagit') " This for single buffer work with git
+call dein#add('danro/rename.vim') " This for change current file name
+call dein#add('justincampbell/vim-eighties') " This for auto resize split window
+call dein#add('andrewferrier/vim-wrapping-softhard') " This for warp
 
 " call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
 
@@ -120,6 +123,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 "-------------FOR FOLD----------------
 set foldmethod=syntax
+"-------------FOR VIM-EIGHTIES--------
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 80
+let g:eighties_extra_width = 10 " Increase this if you want some extra room
+let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
+" let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
 "-------------FOR EASYGIT-------------
 " let g:easygit_enable_command = 1
 "-------------FOR UNDO TREE-----------
@@ -184,7 +193,7 @@ set ts=4 sw=4 et
 let g:indent_guides_guide_size = 1
 set list listchars=tab:>\ ,trail:-,eol:¬
 set cursorcolumn
-set nowrap
+" set nowrap
 "-------------FOR LEADERF----------
 noremap \fn :LeaderfFunction!<cr>
 noremap \m :LeaderfBufTag!<cr>
