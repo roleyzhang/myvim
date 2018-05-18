@@ -250,16 +250,16 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " " normal mode (after 1s; no delay when writing).
 " call neomake#configure#automake('nrwi', 500)
 " let g:neomake_open_list = 2
-" "-------------FOR TEMPLATE SETTING-
-" let g:username='Roley ZHANG'
-" let g:email='roleyzhang@gmail.com'
-" let g:license='copyright@2018'
-" "-------------FOR YANKRING--------
+"-------------FOR TEMPLATE SETTING-
+let g:username='Roley ZHANG'
+let g:email='roleyzhang@gmail.com'
+let g:license='copyright@2018'
+"-------------FOR YANKRING--------
 " " :nnoremap <silent> <F11> :YRShow<CR>
-" nnoremap <silent> \y  :<C-u>YRShow<cr>
-" "-------------FOR VIM_ROOTER
-" let g:rooter_patterns = ['.gradle']
-" let g:rooter_patterns = ['.gradle', '.git/']
+nnoremap <silent> \y  :<C-u>YRShow<cr>
+"-------------FOR VIM_ROOTER
+let g:rooter_patterns = ['.gradle']
+let g:rooter_patterns = ['.gradle', '.git/']
 "-------------FOR CSCOPE CONFIG----
 " $ cscope -bqR    for C++/C
 " $ find . -name "*.java" > cscope.files    for java
