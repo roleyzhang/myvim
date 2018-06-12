@@ -25,6 +25,7 @@ call dein#add('Shougo/denite.nvim')
 call dein#add('miyakogi/conoline.vim') " This is for highlight current line
 call dein#add('vim-airline/vim-airline') " This is for vim status line
 call dein#add('vim-airline/vim-airline-themes') " For Airline themes
+call dein#add('ryanoasis/vim-devicons') " For show icons
 " call dein#add('whatyouhide/vim-lengthmatters') " This is highlight the line over 80 lenght
 call dein#add('morhetz/gruvbox') " This for vim colorschema
 call dein#add('tomtom/tcomment_vim', {'on_map': 'gc', 'on_cmd' : 'TComment'}) " This for comment
@@ -96,9 +97,55 @@ syntax enable
 set relativenumber "show the current line number 0 and up line,down line number
 colorscheme gruvbox
 set background=dark    " Setting dark mode of gruvbox colorschema
-let g:airline_theme='tomorrow' "alduin
-let g:airline#extensions#tabline#enabled = 1
 " set background=light   " Setting light mode of gruvbox colorschema
+" vim-airline settings.
+let g:airline_powerline_fonts = 1
+let g:airline_detect_iminsert = 1
+" let g:airline_symbols_ascii = 0
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ 't'  : 'T',
+      \ }
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = 'Ξ'
+let g:airline_symbols.maxlinenr = ''
+" " Powerline symbols: unicode
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+" extensions
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
+let g:airline_theme='alduin' "tomorrow alduin
+
 let g:conoline_auto_enable = 1 " highlight the current
 if has("autocmd") " This is for cursor position, keep the cursor at the last time postion
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
