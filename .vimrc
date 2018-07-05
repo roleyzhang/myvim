@@ -20,7 +20,7 @@ call dein#add('Shougo/vimproc.vim', {
     \     'unix': 'gmake',
     \    },
     \ }) " This for intractive comand 
-call dein#add('Shougo/denite.nvim')
+" call dein#add('Shougo/denite.nvim')
 " and a lot more plugins.....
 call dein#add('miyakogi/conoline.vim') " This is for highlight current line
 call dein#add('vim-airline/vim-airline') " This is for vim status line
@@ -31,8 +31,8 @@ call dein#add('morhetz/gruvbox') " This for vim colorschema
 call dein#add('tomtom/tcomment_vim', {'on_map': 'gc', 'on_cmd' : 'TComment'}) " This for comment
 call dein#add('easymotion/vim-easymotion') " This for comment
 call dein#add('luochen1990/rainbow') " This use color show parentheses levels
-call dein#add('chemzqm/denite-extra') " This for denite extra source
-call dein#add('neoclide/denite-git') " This for show git info
+" call dein#add('chemzqm/denite-extra') " This for denite extra source
+" call dein#add('neoclide/denite-git') " This for show git info
 " call dein#add('neoclide/redismru.vim') " This for denite mru
 call dein#add('honza/vim-snippets') " This for neoclide/ultisnips
 call dein#add('neoclide/ultisnips', {'on_map' : { 'i' : ['<c-k>'] }}) " This for ultimate snippet
@@ -42,9 +42,10 @@ call dein#add('tpope/vim-surround', {'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 
 call dein#add('dyng/ctrlsf.vim') " This for search
 call dein#add('terryma/vim-multiple-cursors', { 'on_map' : { 'n' : ['<C-n>', '<C-p>'], 'x' : '<C-n>'}})
 call dein#add('Yggdroot/LeaderF') " This for show function & method like fuzzy asyc search
-call dein#add('rking/ag.vim') " This for Search like grep
+" call dein#add('rking/ag.vim') " This for Search like grep
 call dein#add('Chun-Yang/vim-action-ag') " This for Ag search word use *
-call dein#add('Shougo/vimfiler.vim') " This for file exploer
+" call dein#add('Shougo/vimfiler.vim') " This for file exploer
+call dein#add('junegunn/fzf.vim') " This for file exploer
 call dein#add('nathanaelkane/vim-indent-guides') " This show indent
 call dein#add('fholgado/minibufexpl.vim') " This manage vim buffer
 call dein#add('thaerkh/vim-workspace') " This manage vim  session
@@ -63,7 +64,7 @@ call dein#add('w0rp/ale') " This for auto lint code
 call dein#add('aperezdc/vim-template') " This for language template
 call dein#add('vim-scripts/YankRing.vim') " This for Yank
 call dein#add('airblade/vim-rooter') " This for auto change project root folder
-call dein#add('kshenoy/vim-signature') " This for auto change project root folder
+call dein#add('kshenoy/vim-signature') " Plugin to toggle, display and navigate marks
 call dein#add('vim-scripts/DfrankUtil') " This is a library for Indexer & Vimprj
 call dein#add('vim-scripts/vimprj') " This for mutil project configuration
 call dein#add('PeloNZ/vim-indexer') " This for auto generate tags for mutil project
@@ -160,6 +161,62 @@ let &colorcolumn="80,".join(range(120,999),",")
 for s:path in split(glob('~/.vim/vimrc/*.vim'), "\n")
   exe 'source ' . s:path
 endfor
+"-------------FOR FZF---------------
+"------------------+-----------------------------------------------------------------------
+" Command          | List
+" -----------------+-----------------------------------------------------------------------
+"  Files [PATH]    | Files (similar to  :FZF )
+"  GFiles [OPTS]   | Git files ( git ls-files  )
+"  GFiles?         | Git files ( git status  )                                                                                                       
+"  Buffers         | Open buffers                                                                                                                   
+"  Colors          | Color schemes                                                                                                                  
+"  Ag [PATTERN]    | {ag}{6} search result ( ALT-A  to select all, ALT-D  to deselect all )
+"  Lines [QUERY]   | Lines in loaded buffers
+"  BLines [QUERY]  | Lines in the current buffer
+"  Tags [QUERY]    | Tags in the project ( ctags -R  )
+"  BTags [QUERY]   | Tags in the current buffer                                                                                                     
+"  Marks           | Marks                                                                                                                          
+"  Windows         | Windows                                                                                                                        
+"  Locate PATTERN  |  locate  command output
+"  History         |  v:oldfiles  and open buffers
+"  History:        | Command history
+"  History/        | Search history                                                                                                                 
+"  Snippets        | Snippets ({UltiSnips}{7})
+"  Commits         | Git commits (requires {fugitive.vim}{8})
+"  BCommits        | Git commits for the current buffer
+"  Commands        | Commands
+"  Maps            | Normal mode mappings
+"  Helptags        | Help tags [1]
+"  Filetypes       | File types
+" -----------------+-----------------------------------------------------------------------
+"-------------FOR netrw---------------
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        if expl_win_num != -1
+            let cur_win_nr = winnr()
+            exec expl_win_num . 'wincmd w'
+            close
+            exec cur_win_nr . 'wincmd w'
+            unlet t:expl_buf_num
+        else
+            unlet t:expl_buf_num
+        endif
+    else
+        exec '1wincmd w'
+        Vexplore
+        let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+map <silent> <C-E> :call ToggleVExplorer()<CR>
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+" Change directory to the current buffer when opening files.
+set autochdir
 "-------------FOR UltiSnips SETTING---
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-k>"
@@ -245,8 +302,11 @@ set cursorcolumn
 noremap \fn :LeaderfFunction!<cr>
 noremap \m :LeaderfBufTag!<cr>
 noremap \p :LeaderfMru<cr>
+noremap \f :LeaderfFile<cr>
 nnoremap <silent> <space>r  :<C-u>LeaderfMruCwd<cr>
+nnoremap <silent> <space>b  :<C-u>LeaderfBuffer<cr>
 nnoremap <silent> <space>h  :<C-u>LeaderfHistoryCmd<cr>
+nnoremap <silent> <space>w  :<C-u>LeaderfTagCword<cr>
 " use * to search current word in normal mode
 nmap * <Plug>AgActionWord
 " " use * to search selected text in visual mode
@@ -270,6 +330,8 @@ packadd! matchit
 "-------------FOR SUPERTAB--------
 let g:SuperTabDefaultCompletionType = '<C-x><C-o>'
 "-------------FOR AUTOFORMAT------
+" It's need install format program, for java is astyle,
+" https://github.com/Chiel92/vim-autoformat
 let g:formatterpath = ['~.vim/formatter']
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -308,6 +370,16 @@ nnoremap <silent> \y  :<C-u>YRShow<cr>
 let g:rooter_patterns = ['.gradle']
 let g:rooter_patterns = ['.gradle', '.git/']
 "-------------FOR CSCOPE CONFIG----
+"0 or s: Find this C symbol
+"1 or g: Find this definition
+"2 or d: Find functions called by this function
+"3 or c: Find functions calling this function
+"4 or t: Find this text string
+"6 or e: Find this egrep pattern
+"7 or f: Find this file
+"8 or i: Find files #including this file
+"9 or a: Find places where this symbol is assigned a value
+"
 " $ cscope -bqR    for C++/C
 " $ find . -name "*.java" > cscope.files    for java
 " $ cscope -bq
