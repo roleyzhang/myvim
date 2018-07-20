@@ -75,6 +75,7 @@ call dein#add('jreybert/vimagit') " This for single buffer work with git
 call dein#add('danro/rename.vim') " This for change current file name
 call dein#add('justincampbell/vim-eighties') " This for auto resize split window
 call dein#add('andrewferrier/vim-wrapping-softhard') " This for warp
+call dein#add('bennyyip/ydcv.vim') " This for youdao online english-chinese translate
 
 " call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
 
@@ -92,6 +93,9 @@ syntax enable
 
 "=====================ALL CONFIG BY ROLEY====================
 "# TIP, reload change: source ~/.vimrc
+"---FOR YOUDAO ONLINE TRANSLATE----
+nnoremap <leader>d :<c-u>Ydcv<CR>
+xnoremap <leader>d :<c-u>Ydcv<CR>
 "-------------FOR GLOBAL-----------
 " set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
@@ -169,7 +173,7 @@ endfor
 "  GFiles [OPTS]   | Git files ( git ls-files  )
 "  GFiles?         | Git files ( git status  )                                                                                                       
 "  Buffers         | Open buffers                                                                                                                   
-"  Colors          | Color schemes                                                                                                                  
+"  Colors          | Color schemes
 "  Ag [PATTERN]    | {ag}{6} search result ( ALT-A  to select all, ALT-D  to deselect all )
 "  Lines [QUERY]   | Lines in loaded buffers
 "  BLines [QUERY]  | Lines in the current buffer
