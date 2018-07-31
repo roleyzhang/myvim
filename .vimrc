@@ -364,9 +364,21 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " call neomake#configure#automake('nrwi', 500)
 " let g:neomake_open_list = 2
 "-------------FOR TEMPLATE SETTING-
+"aperezdc/vim-template
 let g:username='Roley ZHANG'
 let g:email='roleyzhang@gmail.com'
-let g:license='copyright@2018'
+" let g:license="The original and any copies of the Licensed Programs"
+
+let g:templates_directory = ['~/.vim/templates',]
+let g:templates_user_variables = [['EMAIL', 'GetMail'], ['FULLPATH', 'GetFullPath']]
+
+function GetMail()
+    return 'roleyzhang@gmail.com'
+endfunction
+
+function GetFullPath()
+    return expand('%:p')
+endfunction
 "-------------FOR YANKRING--------
 " " :nnoremap <silent> <F11> :YRShow<CR>
 nnoremap <silent> \y  :<C-u>YRShow<cr>
