@@ -379,6 +379,15 @@ endfunction
 function GetFullPath()
     return expand('%:p')
 endfunction
+"------FOR CLIPBOARD WORKROUND----
+" Copy to X CLIPBOARD
+map <leader>cc :w !xsel -i -b<CR>
+map <leader>cp :w !xsel -i -p<CR>
+map <leader>cs :w !xsel -i -s<CR>
+" Paste from X CLIPBOARD
+map <leader>pp :r!xsel -p<CR>
+map <leader>ps :r!xsel -s<CR>
+map <leader>pb :r!xsel -b<CR>"
 "-------------FOR YANKRING--------
 " " :nnoremap <silent> <F11> :YRShow<CR>
 nnoremap <silent> \y  :<C-u>YRShow<cr>
