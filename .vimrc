@@ -2,86 +2,73 @@
 "=====================ROLEY VIM SETTING======================
 
 "############################################################
-" Using the dein.vim as plugin management
-" First, clone dein.vim’s source.
-" mkdir -p ~/.vim/dein/repos/github.com/Shougo/dein.vim #recommended path
-" git clone https://github.com/Shougo/dein.vim.git \
-"    ~/.vim/dein/repos/github.com/Shougo/dein.vim
-set nocompatible
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim " path to dein.vim
-call dein#begin(expand('~/.vim/dein')) " plugins' root path
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', { 
-    \ 'build': {
-    \     'windows': 'tools\\update-dll-mingw',
-    \     'cygwin': 'make -f make_cygwin.mak',
-    \     'mac': 'make -f make_mac.mak',
-    \     'linux': 'make',
-    \     'unix': 'gmake',
-    \    },
-    \ }) " This for intractive comand 
-" call dein#add('Shougo/denite.nvim')
+" Using the vim-plug as plugin management
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
 " and a lot more plugins.....
-call dein#add('miyakogi/conoline.vim') " This is for highlight current line
-call dein#add('vim-airline/vim-airline') " This is for vim status line
-call dein#add('vim-airline/vim-airline-themes') " For Airline themes
-call dein#add('ryanoasis/vim-devicons') " For show icons
-" call dein#add('whatyouhide/vim-lengthmatters') " This is highlight the line over 80 lenght
-call dein#add('morhetz/gruvbox') " This for vim colorschema
-call dein#add('tomtom/tcomment_vim', {'on_map': 'gc', 'on_cmd' : 'TComment'}) " This for comment
-call dein#add('easymotion/vim-easymotion') " This for comment
-call dein#add('luochen1990/rainbow') " This use color show parentheses levels
-" call dein#add('chemzqm/denite-extra') " This for denite extra source
-" call dein#add('neoclide/denite-git') " This for show git info
-" call dein#add('neoclide/redismru.vim') " This for denite mru
-call dein#add('honza/vim-snippets') " This for neoclide/ultisnips
-call dein#add('neoclide/ultisnips', {'on_map' : { 'i' : ['<c-k>'] }}) " This for ultimate snippet
-" call dein#add('SirVer/ultisnips', {'on_map' : { 'i' : ['<TAB>'] }}) " This for ultimate snippet
-call dein#add('tpope/vim-repeat', {'on_map' : '.'})
-call dein#add('tpope/vim-surround', {'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'}, 'depends' : 'vim-repeat'})
-call dein#add('dyng/ctrlsf.vim') " This for search
-call dein#add('terryma/vim-multiple-cursors', { 'on_map' : { 'n' : ['<C-n>', '<C-p>'], 'x' : '<C-n>'}})
-call dein#add('Yggdroot/LeaderF') " This for show function & method like fuzzy asyc search
-" call dein#add('rking/ag.vim') " This for Search like grep
-call dein#add('Chun-Yang/vim-action-ag') " This for Ag search word use *
-" call dein#add('Shougo/vimfiler.vim') " This for file exploer
-call dein#add('junegunn/fzf.vim') " This for file exploer
-call dein#add('nathanaelkane/vim-indent-guides') " This show indent
-call dein#add('fholgado/minibufexpl.vim') " This manage vim buffer
-call dein#add('thaerkh/vim-workspace') " This manage vim  session
-call dein#add('jiangmiao/auto-pairs') " This manage vim  session
-call dein#add('Shougo/deoplete.nvim') " This for code complete
-call dein#add('artur-shaik/vim-javacomplete2') " This for java code complete
-call dein#add('ervandew/supertab') " This for use tab key to replace c-p c-n
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc') " This plugin needs run pip3 install --user neovim mannually
-endif
-call dein#add('Chiel92/vim-autoformat') " This for source file auto format
-call dein#add('bkad/CamelCaseMotion') " This for camel case move
-" call dein#add('neomake/neomake') " This for auto lint, but replace by ale
-call dein#add('w0rp/ale') " This for auto lint code
-call dein#add('aperezdc/vim-template') " This for language template
-call dein#add('vim-scripts/YankRing.vim') " This for Yank
-call dein#add('airblade/vim-rooter') " This for auto change project root folder
-call dein#add('kshenoy/vim-signature') " Plugin to toggle, display and navigate marks
-call dein#add('vim-scripts/DfrankUtil') " This is a library for Indexer & Vimprj
-call dein#add('vim-scripts/vimprj') " This for mutil project configuration
-call dein#add('PeloNZ/vim-indexer') " This for auto generate tags for mutil project
-call dein#add('sjl/gundo.vim') " This for review undo tree
-call dein#add('airblade/vim-gitgutter') " This for show git info/diff
-" call dein#add('neoclide/vim-easygit') " This for show git info/diff
-call dein#add('jreybert/vimagit') " This for single buffer work with git
-call dein#add('danro/rename.vim') " This for change current file name
-call dein#add('justincampbell/vim-eighties') " This for auto resize split window
-call dein#add('andrewferrier/vim-wrapping-softhard') " This for warp
-call dein#add('bennyyip/ydcv.vim') " This for youdao online english-chinese translate
+Plugin 'miyakogi/conoline.vim' " This is for highlight current line
+Plugin 'vim-airline/vim-airline' " This is for vim status line
+Plugin 'vim-airline/vim-airline-themes' " For Airline themes
+Plugin 'ryanoasis/vim-devicons' " For show icons
+" Plugin 'whatyouhide/vim-lengthmatters' " This is highlight the line over 80 lenght
+Plugin 'morhetz/gruvbox' " This for vim colorschema
+Plugin 'tomtom/tcomment_vim' " This for comment
+Plugin 'easymotion/vim-easymotion' " This for comment
+Plugin 'luochen1990/rainbow' " This use color show parentheses levels
+" Plugin 'chemzqm/denite-extra' " This for denite extra source
+" Plugin 'neoclide/denite-git' " This for show git info
+" Plugin 'neoclide/redismru.vim' " This for denite mru
+Plugin 'honza/vim-snippets' " This for neoclide/ultisnips
+Plugin 'neoclide/ultisnips' " This for ultimate snippet
+" Plugin 'SirVer/ultisnips', {'on_map' : { 'i' : ['<TAB>'] }} " This for ultimate snippet
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'dyng/ctrlsf.vim' " This for search
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Yggdroot/LeaderF' " This for show function & method like fuzzy asyc search
+" Plugin 'rking/ag.vim' " This for Search like grep
+Plugin 'Chun-Yang/vim-action-ag' " This for Ag search word use *
+" Plugin 'Shougo/vimfiler.vim' " This for file exploer
+Plugin 'junegunn/fzf.vim' " This for file exploer
+Plugin 'nathanaelkane/vim-indent-guides' " This show indent
+Plugin 'fholgado/minibufexpl.vim' " This manage vim buffer
+Plugin 'thaerkh/vim-workspace' " This manage vim  session
+Plugin 'jiangmiao/auto-pairs' " This manage vim  session
+" Plugin 'Shougo/deoplete.nvim' " This for code complete
+" Plugin 'artur-shaik/vim-javacomplete2' " This for java code complete
+Plugin 'ervandew/supertab' " This for use tab key to replace c-p c-n
+" if !has('nvim'
+"   Plugin 'roxma/nvim-yarp'
+"   Plugin 'roxma/vim-hug-neovim-rpc' " This plugin needs run pip3 install --user neovim mannually
+" endif
+Plugin 'Chiel92/vim-autoformat' " This for source file auto format
+Plugin 'bkad/CamelCaseMotion' " This for camel case move
+Plugin 'neomake/neomake' " This for neomake-multiprocess
+Plugin 'tracyone/neomake-multiprocess'
+Plugin 'w0rp/ale' " This for auto lint code
+Plugin 'aperezdc/vim-template' " This for language template
+Plugin 'vim-scripts/YankRing.vim' " This for Yank
+Plugin 'airblade/vim-rooter' " This for auto change project root folder
+Plugin 'kshenoy/vim-signature' " Pluginin to toggle, display and navigate marks
+Plugin 'vim-scripts/DfrankUtil' " This is a library for Indexer & Vimprj
+Plugin 'vim-scripts/vimprj' " This for mutil project configuration
+Plugin 'PeloNZ/vim-indexer' " This for auto generate tags for mutil project
+Plugin 'sjl/gundo.vim' " This for review undo tree
+Plugin 'airblade/vim-gitgutter' " This for show git info/diff
+" Plugin 'neoclide/vim-easygit' " This for show git info/diff
+"Plugin 'jreybert/vimagit' " This for single buffer work with git
+Plugin 'danro/rename.vim' " This for change current file name
+Plugin 'justincampbell/vim-eighties' " This for auto resize split window
+Plugin 'andrewferrier/vim-wrapping-softhard' " This for warp
+Plugin 'bennyyip/ydcv.vim' " This for youdao online english-chinese translate
+" Plugin 'Valloric/YouCompleteMe' " This for youdao online english-chinese translate
 
-" call dein#add('sunaku/vim-shortcut') " This for define the shortcut by self later
+" Plugin 'sunaku/vim-shortcut' " This for define the shortcut by self later
 
-call dein#end()
-call dein#save_state()
-
+call vundle#end()            " required
 filetype plugin indent on
 syntax enable
 
@@ -332,7 +319,7 @@ nnoremap <Leader>sp :CtrlSF<CR>
 "-------------FOR MATCH-----------
 packadd! matchit
 "-------------FOR SUPERTAB--------
-let g:SuperTabDefaultCompletionType = '<C-x><C-o>'
+let g:SuperTabDefaultCompletionType = "context"
 "-------------FOR AUTOFORMAT------
 " It's need install format program, for java is astyle,
 " https://github.com/Chiel92/vim-autoformat
@@ -352,6 +339,15 @@ let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+"-------------FOR NEOMAKE MULTIPROCESS---
+"autodetect the existence of commands and select the faster one(rg > ag > grep)
+let g:neomakemp_grep_command = "ag"
+"following is default value
+let g:neomakemp_exclude_files=['*.jpg', '*.png', '*.min.js', '*.swp', '*.pyc','*.out','*.o']
+let g:neomakemp_exclude_dirs=[ '.git', 'bin', 'log', 'build', 'node_modules', '.bundle', '.tmp','.svn'  ]"
+let g:airline_section_error = airline#section#create_right(['%{neomakemp#run_status()}'])
+
 "-------------FOR NEOMAKE CHEKING---
 " When writing a buffer (no delay).
 " call neomake#configure#automake('w')
@@ -433,37 +429,9 @@ let g:rooter_patterns = ['.gradle', '.git/']
 " let g:syntastic_check_on_wq = 0
 "
 "-------------FOR GRADLE SYNTAX CHEKING---
-" let g:syntastic_java_checkers=['javac']
+" let g:syntastic_java_checkers=[]
 " let g:syntastic_java_javac_config_file_enabled = 1
 "
-"-------------FOR JAVA-------------
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
-" let g:JavaComplete_PomPath = '~/.vim/dein/repos/github.com/artur-shaik/vim-javacomplete2/libs/javavi/pom.xml'
-" let g:JavaComplete_GradleExecutable = 'gradle'
-" " 在方法声明完成时闭合括号:
-" let g:JavaComplete_ClosingBrace = 1
-" " javacomplete2基础缓存目录(缺省为 ~/.cache):
-let g:JavaComplete_JavaviLogfileDirectory = '~/tmp'
-let g:JavaComplete_JavaviDebug = 1
-" let g:JavaComplete_BaseDir = '~/tmp'
-" " 使用自己的gradle可执行文件:
-" let g:JavaComplete_GradleExecutable = '/bin/gradle'
-" " 构造javacomplete2使用python3解释器而不是python2:
-" let g:JavaComplete_UsePython3 = 1
-" let g:JavaComplete_ShowExternalCommandsOutput=1
-" let g:JavaComplete_LibsPath='~/libgdx/*.jar'
-" " if isdirectory('lib') != 0
-"     let s:path=expand("./lib/*.jar")
-" else
-"     let s:path=expand("./*.jar")
-" endif
-" if s:path == "./lib/*.jar"
-"     let s:path=''
-" else
-"     let s:classpath=substitute(s:path,'\n',':','g')
-"     let s:fixclasspath=$CLASSPATH . ':' . s:classpath
-"     let g:JavaComplete_LibsPath=s:fixclasspath
-"     " ale java
-"     let g:ale_java_javac_classpath=s:fixclasspath
-" endif
+"-------------FOR JAVA ECLIM-------------
+nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+let g:EclimValidateSortResults = 'severity'
