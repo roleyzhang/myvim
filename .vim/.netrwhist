@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/roley/project/libgdx-cookbook/samples/core'
+let g:netrw_dirhist_2='/home/roley/project/libgdx-cookbook/samples/core/src'
+let g:netrw_dirhist_3='/home/roley/project/libgdx-cookbook/samples/core/src/com'
+let g:netrw_dirhist_4='/home/roley/project/libgdx-cookbook/samples/core/src/com/cookbook'
